@@ -1,0 +1,20 @@
+
+body{
+background-color:rgb(223, 238, 239);
+}
+h1{
+color:rgb(35, 100, 16)
+}
+p{
+color:rgb(6, 11, 83)
+}
+input[type=file], input[type=submit]
+{
+  background-color: #04AA6D;
+  border:rgb(4, 48, 4);
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
