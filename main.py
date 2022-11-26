@@ -15,6 +15,9 @@ nlp = spacy.load('en_core_web_sm')
 from sklearn.feature_extraction.text import TfidfVectorizer
 from spacy.lang.en import English
 import numpy as np
+from transformers.modeling_bert import BertModel
+from summarizer import Summarizer
+from summarizer import TransformerSummarizer
 
 
 app = Flask(__name__)
@@ -150,6 +153,15 @@ def summarizer(text, tokenizer, max_sent_in_summary=3):
     summary = " ".join(ordered_scored_sentences)
     return summary
 
+def bert_summary(text):
+    bert_model = Summarizer()
+    bert_summary = ''.join(bert_model(text, min_length=60))
+    return bert_summary
+
+def gp2(text):
+    GPT2_model = TransformerSummarizer(transformer_type="GPT2",transformer_model_key="gpt2-medium")
+    gp2_text = ''.join(GPT2_model(text, min_length=60))
+    print(gp2_text)
     
 # Returning the app
 if __name__ == '__main__':
